@@ -2,14 +2,16 @@ import { useForm } from 'react-hook-form'
 import './App.css'
 
 import {
-  useQuery,
+  // useQuery,
+  // useQueryClient,
   useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
+
+export const URL = '' as const;
 function App() {
 
   return (
@@ -39,6 +41,7 @@ interface GasUseFormI {
 }
 
 export function GasUseForm() {
+  
   const form = useForm<GasUseFormI>({
     defaultValues: {
       date: new Date().toISOString().split('T')[0], // set initial value for date today
@@ -54,10 +57,34 @@ export function GasUseForm() {
     }
   })
 
+  const mutation = useMutation({
+    mutationKey: ['add-gas-use'],
+    mutationFn: async (data: GasUseFormI) => {
+      data.start_gas_count = parseInt(data.start_gas_count.toString());
+      data.end_gas_count = parseInt(data.end_gas_count.toString());
+      const response = await fetch(`${URL}/api/gas-use`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      console.log(response)
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response;
+    },
+    onSuccess: () => {
+    },
+  });
+
 
   return (
     <div className="gasuse-form-card">
-      <form className="gasuse-form" onSubmit={form.handleSubmit((data) => console.log(data))}>
+      <form className="gasuse-form" onSubmit={form.handleSubmit((data) => {
+        mutation.mutate(data);
+      })}>
         <h2>Gas Use Form</h2>
         <div className="form-row">
           <label htmlFor="date">Date</label>
