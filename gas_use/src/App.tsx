@@ -99,43 +99,43 @@ export function GasUseForm() {
         })}>
           <h2>Gas Use Form</h2>
           <div className="form-row">
-            <label htmlFor="date">Date</label>
+            <label htmlFor="date">Date (תאריך)</label>
             <input id="date" type="date" {...form.register("date")} />
           </div>
           <div className="form-row">
-            <label htmlFor="time">Time</label>
+            <label htmlFor="time">Time (שעה)</label>
             <input id="time" type="time" {...form.register("time")} />
           </div>
           <div className="form-row">
-            <label htmlFor="car_id">Car ID</label>
+            <label htmlFor="car_id">Car ID (מספר רכב)</label>
             <input id="car_id" type="text" {...form.register("car_id")} />
           </div>
           <div className="form-row">
-            <label htmlFor="soldier_id">Soldier ID</label>
+            <label htmlFor="soldier_id">Soldier ID (מספר אישי)</label>
             <input id="soldier_id" type="text" {...form.register("soldier_id")} />
           </div>
           <div className="form-row">
-            <label htmlFor="first_name">First Name</label>
+            <label htmlFor="first_name">First Name (שם פרטי)</label>
             <input id="first_name" type="text" {...form.register("first_name")} />
           </div>
           <div className="form-row">
-            <label htmlFor="last_name">Last Name</label>
+            <label htmlFor="last_name">Last Name (שם משפחה)</label>
             <input id="last_name" type="text" {...form.register("last_name")} />
           </div>
           <div className="form-row">
-            <label htmlFor="unit">Unit</label>
+            <label htmlFor="unit">Unit (יחידה)</label>
             <input id="unit" type="text" {...form.register("unit")} />
           </div>
           <div className="form-row">
-            <label htmlFor="start_gas_count">Start Gas Count</label>
+            <label htmlFor="start_gas_count">Start Gas Count (ספירת גז התחלה)</label>
             <input id="start_gas_count" type="number" {...form.register("start_gas_count")} />
           </div>
           <div className="form-row">
-            <label htmlFor="end_gas_count">End Gas Count</label>
+            <label htmlFor="end_gas_count">End Gas Count (ספירת גז סיום)</label>
             <input id="end_gas_count" type="number" {...form.register("end_gas_count")} />
           </div>
           <div className="form-row">
-            <label htmlFor="signature">Signature</label>
+            <label htmlFor="signature">Signature (חתימה)</label>
             <input id="signature" type="text" {...form.register("signature")} />
           </div>
           <button className="submit-btn" type="submit">Submit</button>
